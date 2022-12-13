@@ -38,6 +38,7 @@ namespace AdventOfCode2022.Day2
             long totalScore = 0;
             while (await Console.In.ReadLineAsync() is string line)
             {
+                Console.WriteLine("lol");
                 var parts = line.Split(" ");
                 foreach(string part in parts) Console.WriteLine(part);
                 var opponentShape = (Shape)(parts[0][0] - 'A');
