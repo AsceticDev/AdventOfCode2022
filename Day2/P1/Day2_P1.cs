@@ -5,15 +5,15 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventOfCode2022.Day2
+namespace AdventOfCode2022.Day2.P1
 {
-    public class Day2
+    public class Day2_P1
     {
         public static string GetTotalScore()
         {
             string[] input = File.ReadLines(@"..\..\..\Day2\day2_data.txt").ToArray();
-            long totalScore = 0;
-            foreach(string line in input)
+            int totalScore = 0;
+            foreach (string line in input)
             {
                 var parts = line.Split(" ");
                 var opponentShape = (Shape)(parts[0][0] - 'A');
@@ -24,11 +24,11 @@ namespace AdventOfCode2022.Day2
         }
 
 
-        static long CalculateRoundScore(Shape opponent, Shape ours)
+        static int CalculateRoundScore(Shape opponent, Shape ours)
         {
             var shapeScore = GetShapeScore(ours);
             var roundScore = 3;
-            if(opponent != ours)
+            if (opponent != ours)
             {
                 int myShapeIndex = (int)ours;
                 int opponentShapeIndex = (int)opponent;
@@ -45,9 +45,9 @@ namespace AdventOfCode2022.Day2
             return shapeScore + roundScore;
         }
 
-        static long GetShapeScore(Shape shape) => (int)shape + 1;
+        static int GetShapeScore(Shape shape) => (int)shape + 1;
 
-        enum Shape  
+        enum Shape
         {
             Rock,
             Paper,
@@ -55,7 +55,7 @@ namespace AdventOfCode2022.Day2
         }
 
 
-        static public long GetTotalScoreSecondMethod()
+        static public int GetTotalScoreSecondMethod()
         {
 
             string[] input = File.ReadLines(@"..\..\..\Day2\day2_data.txt").ToArray();
@@ -113,7 +113,7 @@ namespace AdventOfCode2022.Day2
                 else
                 {
                     score += loss;
-                } 
+                }
 
                 score += shapes[choices[1]];
 
@@ -161,7 +161,6 @@ namespace AdventOfCode2022.Day2
                 }
             }
 
-            //Console.WriteLine($"linesArr len: {linesArr.Length}");
             return score;
         }
     }
