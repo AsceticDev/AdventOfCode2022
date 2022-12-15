@@ -19,7 +19,6 @@ namespace AdventOfCode2022.Day2
                 var opponentShape = (Shape)(parts[0][0] - 'A');
                 var myShape = (Shape)(parts[1][0] - 'X');
                 totalScore += CalculateRoundScore(opponentShape, myShape);
-                //Console.WriteLine("score 1: " + totalScore);
             }
             return totalScore.ToString(); ;
         }
@@ -33,6 +32,14 @@ namespace AdventOfCode2022.Day2
             {
                 int myShapeIndex = (int)ours;
                 int opponentShapeIndex = (int)opponent;
+                /*if (myShapeIndex == (opponentShapeIndex + 1) % 3)
+                {
+                    roundScore = 6;
+                }
+                else
+                {
+                    roundScore = 0;
+                }*/
                 roundScore = myShapeIndex == (opponentShapeIndex + 1) % 3 ? 6 : 0;
             }
             return shapeScore + roundScore;
@@ -48,10 +55,10 @@ namespace AdventOfCode2022.Day2
         }
 
 
-        static public long GetTotalScoreEz()
+        static public long GetTotalScoreSecondMethod()
         {
 
-            string[] linesArr = File.ReadLines("E:\\repos\\dotnet\\AdventOfCode2022\\data\\day2_data.txt").ToArray();
+            string[] input = File.ReadLines(@"..\..\..\Day2\day2_data.txt").ToArray();
 
             int rock = 1;
             int paper = 2;
@@ -72,34 +79,90 @@ namespace AdventOfCode2022.Day2
             shapes.Add("Z", scissors);
 
             int score = 0;
+            int predScore = 0;
 
+            Console.WriteLine($"KEY - VAL");
             foreach (KeyValuePair<string, int> pair in shapes)
             {
-                Console.WriteLine("KEY: " + pair.Key);
-                Console.WriteLine("VALUE: " + pair.Value);
+                Console.WriteLine($"\t{pair.Key} - {pair.Value}");
             }
 
-
-            foreach (string line in linesArr)
+            foreach (string line in input)
             {
-                Console.WriteLine($"line here: {line}");
 
                 string[] choices = line.Split(' ');
 
                 if (choices.Length != 2) continue;
 
-                if (shapes.GetValueOrDefault(choices[0]) == shapes.GetValueOrDefault(choices[1]))
+                if (shapes[choices[0]] == shapes[choices[1]])
                 {
-
+                    score += draw;
                 }
-                else if (false)
+                else if (shapes[choices[0]] == rock && shapes[choices[1]] == paper)
                 {
+                    score += win;
+                }
+                else if (shapes[choices[0]] == paper && shapes[choices[1]] == scissors)
+                {
+                    score += win;
+                }
+                else if (shapes[choices[0]] == scissors && shapes[choices[1]] == rock)
+                {
+                    score += win;
+                }
+                else
+                {
+                    score += loss;
+                } 
 
+                score += shapes[choices[1]];
+
+
+                if (choices[1] == "X")
+                {
+                    predScore += loss;
+
+                    if (shapes[choices[0]] == rock)
+                    {
+                        predScore += scissors;
+                    }
+                    if (shapes[choices[0]] == paper)
+                    {
+                        predScore += rock;
+                    }
+                    if (shapes[choices[0]] == scissors)
+                    {
+                        predScore += paper;
+                    }
+                }
+
+                if (choices[1] == "Y")
+                {
+                    predScore += draw;
+                    predScore += shapes[choices[0]];
+                }
+
+                if (choices[1] == "Z")
+                {
+                    predScore += win;
+
+                    if (shapes[choices[0]] == rock)
+                    {
+                        predScore += paper;
+                    }
+                    if (shapes[choices[0]] == paper)
+                    {
+                        predScore += scissors;
+                    }
+                    if (shapes[choices[0]] == scissors)
+                    {
+                        predScore += rock;
+                    }
                 }
             }
 
             //Console.WriteLine($"linesArr len: {linesArr.Length}");
-            return 1;
+            return score;
         }
     }
 }
