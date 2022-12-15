@@ -7,7 +7,7 @@ namespace AdventOfCode2022.Day1
 {
     public class Day1
     {
-        static public int findMostCalories()
+        static public int FindMostCalories()
         {
             //lets turn that data from .txt into a string array for each line!
             string[] input = File.ReadLines(@"..\..\..\Day1\day1_data.txt").ToArray();

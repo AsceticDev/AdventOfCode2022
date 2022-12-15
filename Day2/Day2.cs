@@ -9,6 +9,37 @@ namespace AdventOfCode2022.Day2
 {
     public class Day2
     {
+        string[] input = File.ReadLines(@"..\..\..\Day2\day2_data.txt").ToArray();
+        public string GetTotalScore()
+        {
+            long totalScore = 0;
+            foreach(string line in input)
+            {
+                var parts = line.Split(" ");
+                var opponentShape = (Shape)(parts[0][0] - 'A');
+                var myShape = (Shape)(parts[1][0] - 'X');
+                totalScore += CalculateRoundScore(opponentShape, myShape);
+                //Console.WriteLine("score 1: " + totalScore);
+            }
+            return totalScore.ToString(); ;
+        }
+
+
+        long CalculateRoundScore(Shape opponent, Shape ours)
+        {
+            var shapeScore = GetShapeScore(ours);
+            var roundScore = 3;
+            if(opponent != ours)
+            {
+                int myShapeIndex = (int)ours;
+                int opponentShapeIndex = (int)opponent;
+                roundScore = myShapeIndex == (opponentShapeIndex + 1) % 3 ? 6 : 0;
+            }
+            return shapeScore + roundScore;
+        }
+
+        long GetShapeScore(Shape shape) => (int)shape + 1;
+
         enum Shape  
         {
             Rock,
@@ -16,40 +47,8 @@ namespace AdventOfCode2022.Day2
             Scissors
         }
 
-        long CalculateRoundScore(Shape opponent, Shape player)
-        {
-            var shapeScore = GetShapeScore(player);
-            var roundScore = 3;
 
-            if(opponent != player)
-            {
-                int ourShapeIndex = (int)player;
-                int opponentShapeIndex = (int)opponent;
-                roundScore = ourShapeIndex == (opponentShapeIndex + 1) % 3 ? 6 : 0;
-            }
-
-            return shapeScore + roundScore;
-        }
-
-        long GetShapeScore(Shape shape) => (int)shape + 1;
-
-        async public void GetTotalScore()
-        {
-            long totalScore = 0;
-            while (await Console.In.ReadLineAsync() is string line)
-            {
-                Console.WriteLine("lol");
-                var parts = line.Split(" ");
-                foreach(string part in parts) Console.WriteLine(part);
-                var opponentShape = (Shape)(parts[0][0] - 'A');
-                var ourShape = (Shape)(parts[1][0] - 'X');
-                totalScore += CalculateRoundScore(opponentShape, ourShape);
-            }
-
-            await Console.Out.WriteLineAsync(totalScore.ToString());
-        }
-
-        static public long getTotalScore()
+        static public long GetTotalScoreEz()
         {
 
             string[] linesArr = File.ReadLines("E:\\repos\\dotnet\\AdventOfCode2022\\data\\day2_data.txt").ToArray();
