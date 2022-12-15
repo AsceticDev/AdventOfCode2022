@@ -9,9 +9,9 @@ namespace AdventOfCode2022.Day2
 {
     public class Day2
     {
-        string[] input = File.ReadLines(@"..\..\..\Day2\day2_data.txt").ToArray();
-        public string GetTotalScore()
+        public static string GetTotalScore()
         {
+            string[] input = File.ReadLines(@"..\..\..\Day2\day2_data.txt").ToArray();
             long totalScore = 0;
             foreach(string line in input)
             {
@@ -25,7 +25,7 @@ namespace AdventOfCode2022.Day2
         }
 
 
-        long CalculateRoundScore(Shape opponent, Shape ours)
+        static long CalculateRoundScore(Shape opponent, Shape ours)
         {
             var shapeScore = GetShapeScore(ours);
             var roundScore = 3;
@@ -38,7 +38,7 @@ namespace AdventOfCode2022.Day2
             return shapeScore + roundScore;
         }
 
-        long GetShapeScore(Shape shape) => (int)shape + 1;
+        static long GetShapeScore(Shape shape) => (int)shape + 1;
 
         enum Shape  
         {
