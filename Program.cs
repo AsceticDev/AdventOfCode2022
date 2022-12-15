@@ -16,5 +16,5 @@ using AdventOfCode2022.Day2.P2;
 //Console.WriteLine("Second method: " + Day2_P1.GetTotalScoreSecondMethod());
 
 //***Part 2***
-Console.WriteLine("Day 2 P2 Answer: " + Day2_P2.GetTotalScore());
-Console.WriteLine("Second method: " + Day2_P2.GetTotalScoreSecondMethod());
+//Console.WriteLine("Day 2 P2 Answer: " + Day2_P2.GetTotalScore());
+//Console.WriteLine("Second method: " + Day2_P2.GetTotalScoreSecondMethod());

@@ -116,51 +116,7 @@ namespace AdventOfCode2022.Day2.P1
                 }
 
                 score += shapes[choices[1]];
-
-
-                if (choices[1] == "X")
-                {
-                    predScore += loss;
-
-                    if (shapes[choices[0]] == rock)
-                    {
-                        predScore += scissors;
-                    }
-                    if (shapes[choices[0]] == paper)
-                    {
-                        predScore += rock;
-                    }
-                    if (shapes[choices[0]] == scissors)
-                    {
-                        predScore += paper;
-                    }
-                }
-
-                if (choices[1] == "Y")
-                {
-                    predScore += draw;
-                    predScore += shapes[choices[0]];
-                }
-
-                if (choices[1] == "Z")
-                {
-                    predScore += win;
-
-                    if (shapes[choices[0]] == rock)
-                    {
-                        predScore += paper;
-                    }
-                    if (shapes[choices[0]] == paper)
-                    {
-                        predScore += scissors;
-                    }
-                    if (shapes[choices[0]] == scissors)
-                    {
-                        predScore += rock;
-                    }
-                }
             }
-
             return score;
         }
     }
