@@ -10,7 +10,7 @@ namespace AdventOfCode2022.Day2.P2
     {
         public static string GetTotalScore()
         {
-            string[] input = File.ReadLines(@"..\..\..\Day2\day2_data.txt").ToArray();
+            string[] input = File.ReadLines(@"..\..\..\Data\day2.txt").ToArray();
             int totalScore = 0;
             foreach (string line in input)
             {
