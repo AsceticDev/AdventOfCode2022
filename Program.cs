@@ -6,6 +6,8 @@ using AdventOfCode2022.Day2.P2;
 using AdventOfCode2022.Day3;
 using AdventOfCode2022.Day4;
 using AdventOfCode2022.Day5;
+using AdventOfCode2022.Day6;
+using AdventOfCode2022.Day7;
 
 var stopwatch = Stopwatch.StartNew();
 
@@ -53,20 +55,18 @@ var stopwatch = Stopwatch.StartNew();
 
 /////Day 6/////
 //***Part 1***
-//Console.WriteLine("Day 6 P1 Answer: " + Day6_1.GetSum());
+//Day6_1.GetNumberOfCharacters();
 
 //***Part 2***
 //stopwatch = Stopwatch.StartNew();
-//Console.WriteLine($"Day 6 P2 Answer: {Day6_2.GetSum()} took [{stopwatch.Elapsed}] seconds.");
-
+//Day6_2.GetNumberOfCharacters();
 
 /////Day 7/////
 //***Part 1***
-//Console.WriteLine("Day 7 P1 Answer: " + Day7_1.GetSum());
+//Day7_1.GetSum();
 
 //***Part 2***
-//stopwatch = Stopwatch.StartNew();
-//Console.WriteLine($"Day 7 P2 Answer: {Day7_2.GetSum()} took [{stopwatch.Elapsed}] seconds.");
+//Day7_2.GetSum();
 
 
 /////Day 8/////
