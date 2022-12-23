@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2022.Day13
 {
-    class Day13_1
+    class Day13_2
     {
         public static void SumOfIndices()
         {
             var input = File.OpenRead(@"..\..\..\Data\day13.txt");
             var reader = new StreamReader(input);
+            var packets = new List<Packet>();
 
-            int correctIndexSum = 0;
-            int currentPacket = 1;
             while (!reader.EndOfStream)
             {
                 var packet1Line = reader.ReadLine();
@@ -24,16 +23,25 @@ namespace AdventOfCode2022.Day13
                 var packet1 = Packet.Parse(packet1Line!);
                 var packet2 = Packet.Parse(packet2Line!);
 
-                if (packet1.CompareTo(packet2) < 0)
-                {
-                    correctIndexSum += currentPacket;
-                }
-
-                currentPacket++;
+                packets.Add(packet1);
+                packets.Add(packet2);
             }
 
-            Console.WriteLine(correctIndexSum);
+            var divider1 = Packet.Parse("[[2]]");
+            var divider2 = Packet.Parse("[[6]]");
+            packets.Add(divider1);
+            packets.Add(divider2);
+
+            packets.Sort();
+
+            var divider1Position = packets.IndexOf(divider1) + 1;
+            var divider2Position = packets.IndexOf(divider2) + 1;
+
+            Console.WriteLine(divider1Position * divider2Position);
+
         }
+
+
         abstract class Packet : IComparable<Packet>
         {
             public static Packet Parse(string input)
@@ -122,5 +130,6 @@ namespace AdventOfCode2022.Day13
 
             public int Value { get; }
         }
+
     }
 }
