@@ -14,11 +14,18 @@ using AdventOfCode2022.Day10;
 using AdventOfCode2022.Day12;
 using AdventOfCode2022.Day11;
 using AdventOfCode2022.Day13;
+using AdventOfCode2022.Day14;
+using AdventOfCode2022.Day15;
+using AdventOfCode2022.Day16;
+using AdventOfCode2022;
+using AdventOfCode2022.Day18;
 
 var stopwatch = Stopwatch.StartNew();
 
 /////Day 1/////
 //Console.WriteLine($"Day1 Answer: {Day1.findMostCalories()} Calories.");
+//***Part 2***
+//Day1_2.GetResult();
 
 //-------------------------------------------------//
 /////Day 2/////
@@ -140,40 +147,36 @@ var stopwatch = Stopwatch.StartNew();
 //***Part 1***
 //Day13_1.SumOfIndices();
 //***Part 2***
-Day13_2.SumOfIndices();
+//Day13_2.SumOfIndices();
 
 
 //-------------------------------------------------//
 /////Day 14/////
 //-------------------------------------------------//
 //***Part 1***
-//Console.WriteLine("Day 14 P1 Answer: " + Day14_1.GetSum());
+//Day14_1.GetUnitsOfSand();
 
 //***Part 2***
-//stopwatch = Stopwatch.StartNew();
-//Console.WriteLine($"Day 14 P2 Answer: {Day14_2.GetSum()} took [{stopwatch.Elapsed}] seconds.");
+//Day14_2.GetUnitsOfSand();
 
 
 //-------------------------------------------------//
 /////Day 15/////
 //-------------------------------------------------//
 //***Part 1***
-//Console.WriteLine("Day 15 P1 Answer: " + Day15_1.GetSum());
+//Day15_1.GetIntervals();
 
 //***Part 2***
-//stopwatch = Stopwatch.StartNew();
-//Console.WriteLine($"Day 15 P2 Answer: {Day15_2.GetSum()} took [{stopwatch.Elapsed}] seconds.");
+//Day15_2.GetIntervals();
 
 
 //-------------------------------------------------//
 /////Day 16/////
 //-------------------------------------------------//
 //***Part 1***
-//Console.WriteLine("Day 16 P1 Answer: " + Day16_1.GetSum());
-
+//Day16_1.GetMaxPressure();
 //***Part 2***
-//stopwatch = Stopwatch.StartNew();
-//Console.WriteLine($"Day 16 P2 Answer: {Day16_2.GetSum()} took [{stopwatch.Elapsed}] seconds.");
+//Day16_2.GetMaxPressure();
 
 
 //-------------------------------------------------//
@@ -183,7 +186,6 @@ Day13_2.SumOfIndices();
 //Console.WriteLine("Day 17 P1 Answer: " + Day17_1.GetSum());
 
 //***Part 2***
-//stopwatch = Stopwatch.StartNew();
 //Console.WriteLine($"Day 17 P2 Answer: {Day17_2.GetSum()} took [{stopwatch.Elapsed}] seconds.");
 
 
@@ -191,11 +193,10 @@ Day13_2.SumOfIndices();
 /////Day 18/////
 //-------------------------------------------------//
 //***Part 1***
-//Console.WriteLine("Day 18 P1 Answer: " + Day18_1.GetSum());
+//Day18_1.GetSurfaceArea();
 
 //***Part 2***
-//stopwatch = Stopwatch.StartNew();
-//Console.WriteLine($"Day 18 P2 Answer: {Day18_2.GetSum()} took [{stopwatch.Elapsed}] seconds.");
+Day18_2.GetSurfaceArea();
 
 
 //-------------------------------------------------//

@@ -6,21 +6,27 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2022.Day14
 {
-    class Day14_1
+    class Day14_2
     {
         public static void GetUnitsOfSand()
         {
             string[] input = File.ReadLines(@"..\..\..\Data\day14.txt").ToArray();
+
             const int MaxSize = 1000;
             var cave = new char[MaxSize, MaxSize];
+
+            var maxY = 0;
 
             foreach (var line in input)
             {
                 var parts = line.Split(" -> ");
 
-                static Point ParsePoint(string pointString)
+                Point ParsePoint(string pointString)
                 {
                     var pointParts = pointString.Split(',');
+                    var x = int.Parse(pointParts[0]);
+                    var y = int.Parse(pointParts[1]);
+                    maxY = Math.Max(y, maxY);
                     return new Point(int.Parse(pointParts[0]), int.Parse(pointParts[1]));
                 }
 
@@ -39,27 +45,27 @@ namespace AdventOfCode2022.Day14
                 }
             }
 
-            var sandCount = 0;
-            while (DropSand())
+            for (int x = 0; x < MaxSize; x++)
             {
+                cave[x, maxY + 2] = '#';
+            }
+
+            var sandCount = 0;
+            while (cave[500, 0] == 0)
+            {
+                DropSand();
                 sandCount++;
             }
 
-            OutputCave(490, 0, 504, 10);
-            Console.Clear();
+            OutputCave(490, 0, 520, 13);
 
             Console.WriteLine(sandCount);
 
-            bool DropSand()
+            void DropSand()
             {
                 var currentPosition = new Point(500, 0);
                 while (true)
                 {
-                    if (currentPosition.Y == MaxSize - 1)
-                    {
-                        return false;
-                    }
-
                     if (cave[currentPosition.X, currentPosition.Y + 1] == 0)
                     {
                         currentPosition = new Point(currentPosition.X, currentPosition.Y + 1);
@@ -76,7 +82,7 @@ namespace AdventOfCode2022.Day14
                     {
                         // Rest
                         cave[currentPosition.X, currentPosition.Y] = 'o';
-                        return true;
+                        break;
                     }
                 }
             }
@@ -96,7 +102,7 @@ namespace AdventOfCode2022.Day14
         public record struct Point(int X, int Y)
         {
             public static Point operator +(Point a, Point b) => new Point(a.X + b.X, a.Y + b.Y);
-            
+
             public static Point operator -(Point a, Point b) => new Point(a.X - b.X, a.Y - b.Y);
 
             public Point Normalize() => new Point(X != 0 ? X / Math.Abs(X) : 0, Y != 0 ? Y / Math.Abs(Y) : 0);
@@ -105,5 +111,7 @@ namespace AdventOfCode2022.Day14
 
             public int ManhattanDistance(Point b) => Math.Abs(X - b.X) + Math.Abs(Y - b.Y);
         }
+
+
     }
 }
